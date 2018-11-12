@@ -9,6 +9,7 @@ import android.os.IBinder;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.allon.andriddevart.R;
 
@@ -17,6 +18,8 @@ import java.util.List;
 public class BookManagerServiceActivity extends AppCompatActivity {
 
     private IBookManager mRemoteBookManager;
+    private TextView mTv;
+    private static final String  TAG = BookManagerServiceActivity.class.getSimpleName();
 
     public static void start(Context context) {
         context.startActivity(new Intent(context, BookManagerServiceActivity.class));
@@ -27,20 +30,22 @@ public class BookManagerServiceActivity extends AppCompatActivity {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             mRemoteBookManager = IBookManager.Stub.asInterface(service);
-
             try {
                 List<Book> bookList = mRemoteBookManager.getBookList();
-                Log.i("BookManager", bookList.toString());
-                Log.i("BookManager", bookList.getClass().getCanonicalName());
+                Log.i(TAG, bookList.toString());
+                Log.i(TAG, bookList.getClass().getCanonicalName());
                 mRemoteBookManager.adddBook(new Book(3, "大话数据结构"));
                 bookList = mRemoteBookManager.getBookList();
-                Log.i("BookManager", bookList.toString());
+                Log.i(TAG, bookList.toString());
                 mListener = new IOnNewBookArrivedListener.Stub() {
                     @Override
                     public void onNewBookArrived(Book newBook) throws RemoteException {
-                        Log.e("=========", newBook.toString());
+                        Log.e(TAG, newBook.toString());
+                        Log.e(TAG, Thread.currentThread().getName());
+                        //这里是子线程，如果想跟新UI，请把数据发送到UI线程中去。
                     }
                 };
+                Log.e(TAG, mListener.toString());
                 mRemoteBookManager.registerListener(mListener);
             } catch (RemoteException e) {
                 e.printStackTrace();
@@ -49,7 +54,9 @@ public class BookManagerServiceActivity extends AppCompatActivity {
 
         @Override
         public void onServiceDisconnected(ComponentName name) {
-
+            Log.e(TAG, "onServiceDisconnected=====");
+            Intent intent = new Intent(BookManagerServiceActivity.this, BookManagerService.class);
+            bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
         }
     };
 
@@ -59,6 +66,7 @@ public class BookManagerServiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book_manager_service);
         Intent intent = new Intent(this, BookManagerService.class);
         bindService(intent, mServiceConnection, Context.BIND_AUTO_CREATE);
+        mTv = findViewById(R.id.textView);
     }
 
     @Override

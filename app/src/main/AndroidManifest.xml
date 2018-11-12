@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.allon.andriddevart">
+    <permission android:name="com.allon.andriddevart.ipc.binder.permisson.access.book.service"
+        android:protectionLevel="normal"/>
+    <uses-permission android:name="com.allon.andriddevart.ipc.binder.permisson.access.book.service"/>
 
     <application
         android:allowBackup="true"
