@@ -85,4 +85,8 @@ public class BookManagerActivity extends AppCompatActivity {
         }
         super.onDestroy();
     }
+
+    public void m(){
+
+    }
 }

@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.TextView
 import com.allon.andriddevart.ipc.binder.BookManagerServiceActivity
 import com.allon.andriddevart.messager.MessagerService
+import com.allon.andriddevart.proxy.ProxyActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -54,7 +56,9 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, MessagerService::class.java)
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE)
         findViewById<TextView>(R.id.bms).setOnClickListener { BookManagerServiceActivity.start(it.context) }
+        proxy.setOnClickListener { ProxyActivity.start(it.context) }
     }
+
 
     override fun onDestroy() {
         unbindService(mConnection);

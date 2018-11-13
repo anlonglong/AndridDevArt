@@ -15,6 +15,7 @@ import java.lang.reflect.Proxy;
 
 /**
  * hook技术就是通过反射，在系统API执行的前后插入自己的业务逻辑代码。
+ * https://blog.csdn.net/u012439416/article/details/70477359
  */
 @SuppressWarnings("all")
 public class HookUtil {

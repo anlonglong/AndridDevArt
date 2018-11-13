@@ -15,10 +15,6 @@ import android.widget.TextView;
 import com.allon.andriddevart.R;
 import com.allon.andriddevart.ipc.binder.hook.HookUtil;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
-import java.lang.reflect.Proxy;
 import java.util.List;
 
 public class BookManagerServiceActivity extends AppCompatActivity {
