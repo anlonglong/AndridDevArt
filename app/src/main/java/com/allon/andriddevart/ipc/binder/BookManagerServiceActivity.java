@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.allon.andriddevart.R;
+import com.allon.andriddevart.ipc.binder.hook.HookUtil;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
@@ -28,51 +29,6 @@ public class BookManagerServiceActivity extends AppCompatActivity {
 
     public static void start(Context context) {
         context.startActivity(new Intent(context, BookManagerServiceActivity.class));
-    }
-
-
-    /**
-     * hook技术就是通过反射，在系统API执行的前后插入自己的业务逻辑代码。
-     */
-    public void hook(){
-        try {
-            Class<?> view = Class.forName("android.view.View");
-            Method method = view.getDeclaredMethod("getListenerInfo");
-            method.setAccessible(true);
-            Object listenerInfoObj = method.invoke(mTv);
-            Class<?> listenerInfo = Class.forName("android.view.View$ListenerInfo");
-            Field mOnClickListenerField = listenerInfo.getDeclaredField("mOnClickListener");
-            mOnClickListenerField.setAccessible(true);
-            final View.OnClickListener m = (View.OnClickListener) mOnClickListenerField.get(listenerInfoObj);
-            /**
-             * 将listenerInfoObj对象的mOnClickListenerField字段的值改成自己设置的值（这里就是这个View.OnClickListener的匿名内部类）
-             * 在匿名内部类中处理完自己的逻辑以后，在调用系统的点击事件。
-             *
-             */
-            mOnClickListenerField.set(listenerInfoObj, new View.OnClickListener(){
-                @Override
-                public void onClick(View v) {
-
-                Log.i("11111---------","----------");
-                    /**
-                     * 调用系统的点击事件；
-                     * 点击的时候，每次都会调用
-                     */
-                    m.onClick(v);
-                }
-            });
-            View.OnClickListener proxyInstance = (View.OnClickListener) Proxy.newProxyInstance(mTv.getClass().getClassLoader(), new Class[]{View.OnClickListener.class}, new InvocationHandler() {
-                @Override
-                public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                    //首次点击的时候调用。
-                    Log.i("11111---------","----------");
-                    return method.invoke(m, args);
-                }
-            });
-            proxyInstance.onClick(mTv);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     private IOnNewBookArrivedListener.Stub mListener;
@@ -123,7 +79,7 @@ public class BookManagerServiceActivity extends AppCompatActivity {
                 Log.i("22222==========","============");
             }
         });
-        hook();
+        HookUtil.hookViewListener(mTv);
     }
 
     @Override
