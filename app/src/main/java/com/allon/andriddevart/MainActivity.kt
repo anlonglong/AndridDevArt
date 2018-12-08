@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        println("this log from anthor AndroidArtdev branch")
         val intent = Intent(this, MessagerService::class.java)
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE)
         findViewById<TextView>(R.id.bms).setOnClickListener { BookManagerServiceActivity.start(it.context) }
