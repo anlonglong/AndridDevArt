@@ -59,10 +59,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.bms).setOnClickListener { BookManagerServiceActivity.start(it.context) }
         proxy.setOnClickListener { ProxyActivity.start(it.context) }
     }
-
-
     override fun onDestroy() {
         unbindService(mConnection);
+	//tian jia yi ju zhushi
         super.onDestroy()
     }
 }
