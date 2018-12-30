@@ -19,3 +19,5 @@ add text from aaa branch
 
 
 fixed issis-01
+ fixed issis-02
+
