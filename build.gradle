@@ -7,7 +7,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.1.4'
+//可以改成本地就已经存在的gradle的版本，以避免同步module的时候花长时间去下载
+        classpath 'com.android.tools.build:gradle:3.2.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         // NOTE: Do not place your application dependencies here; they belong
