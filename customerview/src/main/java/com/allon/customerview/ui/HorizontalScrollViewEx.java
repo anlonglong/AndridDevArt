@@ -59,6 +59,11 @@ public class HorizontalScrollViewEx extends ViewGroup {
                 intercepted = false;
                 if (!mScroller.isFinished()) {
                     mScroller.abortAnimation();
+                    /**
+                     * 如果此时用户正在水平滑动，但是在水平滑动停止之前，用户又迅速的进行了竖直滑动，
+                     * 就会导致界面无法滑动到终点而处于一种中间状态，为了避免这种状况的发生，当水平
+                     * 方向正在滑动的时候，我们让父布局继续拦截事件。
+                     */
                     intercepted = true;
                 }
                 break;
