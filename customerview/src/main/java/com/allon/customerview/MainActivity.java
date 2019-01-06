@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.allon.customerview.basekonwageview.BaseViewKnowledgeActivity;
+import com.allon.customerview.interceptor.DemoActivity_1;
 
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViewById(R.id.tv_base_view_knowladge).setOnClickListener(this);
+        findViewById(R.id.tv_interceptor).setOnClickListener(this);
     }
 
     @Override
@@ -31,6 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (v.getId()) {
             case R.id.tv_base_view_knowladge:
                 BaseViewKnowledgeActivity.start(this);
+                break;
+            case R.id.tv_interceptor:
+                DemoActivity_1.start(v.getContext());
                 break;
                 default:
         }
