@@ -32,7 +32,6 @@ public class BaseViewKnowledgeActivity extends AppCompatActivity implements View
         view_1.setOnTouchListener(this);
         mScroller =  new Scroller(this);
         velocityTracker = VelocityTracker.obtain();
-        velocityTracker.computeCurrentVelocity(100);
         ViewConfiguration.get(this).getScaledTouchSlop();
         final CustomerView cv = findViewById(R.id.cv);
         view_1.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +64,7 @@ public class BaseViewKnowledgeActivity extends AppCompatActivity implements View
                 break;
             case MotionEvent.ACTION_MOVE:
                 Log.i("++++++++++++++","MOVE");
-
+                velocityTracker.computeCurrentVelocity(100);
                 float xVelocity = velocityTracker.getXVelocity();
                 float yVelocity = velocityTracker.getYVelocity();
                 Log.i("-------","yVelocity = " + yVelocity);

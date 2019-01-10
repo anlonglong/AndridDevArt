@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:padding="20dp"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -13,4 +14,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="view的基础知识" />
+
+    <TextView
+        android:id="@+id/tv_interceptor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="view的滑动冲突" />
 </LinearLayout>
