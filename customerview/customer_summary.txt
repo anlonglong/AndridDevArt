@@ -1,0 +1,11 @@
+自定义view时候的onMeasure方法的总结：
+
+1，view的onMeasure方法的
+   一般我们只关注EXATLY和AT_MOST的这两种测量规格。
+
+
+
+CircleView
+
+1. margin属性是由父容器控制的，如果自定义view继承的是View的话，
+不用对margin属性做单独的出路。
