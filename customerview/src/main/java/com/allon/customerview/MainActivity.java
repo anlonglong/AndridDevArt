@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         findViewById(R.id.tv_base_view_knowladge).setOnClickListener(this);
         findViewById(R.id.tv_interceptor).setOnClickListener(this);
+        findViewById(R.id.tv_circle_view).setOnClickListener(this);
     }
 
     @Override
@@ -36,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.tv_interceptor:
                 DemoActivity_1.start(v.getContext());
+                break;
+            case R.id.tv_circle_view:
+                CircleViewActivity.start(v.getContext());
                 break;
                 default:
         }
