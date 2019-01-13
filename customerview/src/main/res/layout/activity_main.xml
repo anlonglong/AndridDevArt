@@ -20,4 +20,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="view的滑动冲突" />
+    <TextView
+        android:id="@+id/tv_circle_view"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:background="@android:color/holo_blue_bright"
+        android:text="CircleView Activity" />
 </LinearLayout>
