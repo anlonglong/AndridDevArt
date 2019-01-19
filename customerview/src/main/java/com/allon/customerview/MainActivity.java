@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         findViewById(R.id.tv_base_view_knowladge).setOnClickListener(this);
         findViewById(R.id.tv_interceptor).setOnClickListener(this);
         findViewById(R.id.tv_circle_view).setOnClickListener(this);
+        findViewById(R.id.tv_reveal_view).setOnClickListener(this);
     }
 
     @Override
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.tv_circle_view:
                 CircleViewActivity.start(v.getContext());
+                case R.id.tv_reveal_view:
+                RevealLayoutActivity.start(v.getContext());
                 break;
                 default:
         }
