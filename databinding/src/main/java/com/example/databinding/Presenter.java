@@ -12,6 +12,7 @@ public class Presenter {
     }
 
     public void onSaveClick(User user){
-        Toast.makeText(mContext, user.toString(), Toast.LENGTH_SHORT).show();
+        MainActivity.mDirtyFlags|= 0x02;
+        Toast.makeText(mContext, user.toString() + (((MainActivity.mDirtyFlags&0x02) == 0x02) ? "true" : "false") + MainActivity.mDirtyFlags, Toast.LENGTH_SHORT).show();
     }
 }

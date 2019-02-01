@@ -35,6 +35,10 @@
         <variable
             name="presenter"
             type="com.example.databinding.Presenter"/>
+
+        <variable
+            name="people"
+            type="com.example.databinding.People"/>
     </data>
 
     <android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
@@ -102,6 +106,16 @@
                 android:layout_height="wrap_content"
                 android:text="点我"
                 android:onClick="@{() ->presenter.onSaveClick(user)}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{"firstName =  " + people.firstName.get()}'/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{"lastName =  " + people.lastName.get()}'/>
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 </layout>

@@ -6,6 +6,7 @@ import android.widget.Toast;
 public class MyHandler {
 
     public void onClickFriend(View view) {
-        Toast.makeText(view.getContext(), "hahahah", Toast.LENGTH_SHORT).show();
+        MainActivity.mDirtyFlags|= 0x01;
+        Toast.makeText(view.getContext(), "hahahah = " +  (((MainActivity.mDirtyFlags&0x01) == 0x01) ? "true" : "false")+ MainActivity.mDirtyFlags, Toast.LENGTH_SHORT).show();
     }
 }

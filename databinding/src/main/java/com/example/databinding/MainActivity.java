@@ -13,6 +13,8 @@ import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    public static  long mDirtyFlags = 0xffL;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dataBinding.setClickListener(this);
         dataBinding.setMyHandler(new MyHandler());
         dataBinding.setPresenter(new Presenter(this));
+        final People people = new People();
+        people.firstName.set("alex");
+        people.lastName.set("tomas");
+        dataBinding.setPeople(people);
+        dataBinding.tv.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                people.firstName.set("alllllllllex");
+            }
+        }, 3000);
 
     }
 
