@@ -39,6 +39,13 @@
         <variable
             name="people"
             type="com.example.databinding.People"/>
+
+        <variable
+            name="arrayMap"
+            type="android.databinding.ObservableArrayMap"/>
+        <variable
+            name="olist"
+            type="android.databinding.ObservableList"/>
     </data>
 
     <android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
@@ -116,6 +123,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text='@{"lastName =  " + people.lastName.get()}'/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{"ObservableArrayMap: "+ arrayMap.lastName}'/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{"ObservableList: "+ olist[0]}'/>
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>
 </layout>

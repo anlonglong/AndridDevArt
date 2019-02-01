@@ -1,6 +1,8 @@
 package com.example.databinding;
 
 import android.databinding.DataBindingUtil;
+import android.databinding.ObservableArrayList;
+import android.databinding.ObservableArrayMap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -42,6 +44,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 people.firstName.set("alllllllllex");
             }
         }, 3000);
+
+        ObservableArrayMap<String, Object> user = new ObservableArrayMap<>();
+        user.put("firstName", "Google");
+        user.put("lastName", "Inc.");
+        user.put("age", 17);
+        dataBinding.setArrayMap(user);
+        ObservableArrayList<Object> list = new ObservableArrayList<>();
+        list.add("Google");
+        list.add("Inc.");
+        list.add(17);
+        dataBinding.setOlist(list);
 
     }
 
