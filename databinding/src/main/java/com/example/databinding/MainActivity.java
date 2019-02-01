@@ -9,6 +9,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.databinding.databinding.ActivityMainBinding;
+import com.jinrishici.sdk.android.JinrishiciClient;
+import com.jinrishici.sdk.android.listener.JinrishiciCallback;
+import com.jinrishici.sdk.android.model.JinrishiciRuntimeException;
+import com.jinrishici.sdk.android.model.PoetySentence;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,7 +59,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         list.add("Inc.");
         list.add(17);
         dataBinding.setOlist(list);
+        JinrishiciClient client = new JinrishiciClient();
+        client.getOneSentenceBackground(new JinrishiciCallback() {
+            @Override
+            public void done(PoetySentence poetySentence) {
+                Toast.makeText(MainActivity.this, poetySentence.getData().getContent(), Toast.LENGTH_SHORT).show();
+                people.firstName.set(poetySentence.getData().getContent());
+            }
 
+            @Override
+            public void error(JinrishiciRuntimeException e) {
+
+            }
+        });
     }
 
     public void show() {
