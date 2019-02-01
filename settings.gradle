@@ -1,1 +1,1 @@
-include ':app', ':remoteviewdemo', ':drawabledemo', 'customerview'
+include ':app', ':remoteviewdemo', ':drawabledemo', ':databinding', 'customerview'
