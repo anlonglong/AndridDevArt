@@ -24,5 +24,6 @@ allprojects {
 }
 
 task clean(type: Delete) {
+    print("---------------" + rootProject.buildDir.path)
     delete rootProject.buildDir
 }
