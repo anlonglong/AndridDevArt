@@ -8,6 +8,7 @@
 
     <TextView
         android:id="@+id/tv_add_btn"
+        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="add button with windowMagager"
@@ -15,5 +16,13 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/nio_lock_car_vivid_red_trunk"
+        app:layout_constraintTop_toBottomOf="@id/tv_add_btn"/>
 
 </android.support.constraint.ConstraintLayout>
