@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="java.util.List"/>
+        <import type="java.util.Map"/>
+
+        <variable
+            name="user"
+            type="com.example.databinding.User" />
+
+        <variable
+            name="str"
+            type="String" />
+
+        <variable
+            name="key"
+            type="String" />
+
+        <variable
+            name="num"
+            type="int" />
+        <variable name="list" type="List&lt;String&gt;"/>
+        <variable name="map" type="Map&lt;String, String&gt;"/>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+
+        <variable
+            name="myHandler"
+            type="com.example.databinding.MyHandler"/>
+
+        <variable
+            name="presenter"
+            type="com.example.databinding.Presenter"/>
+
+        <variable
+            name="people"
+            type="com.example.databinding.People"/>
+
+        <variable
+            name="arrayMap"
+            type="android.databinding.ObservableArrayMap"/>
+        <variable
+            name="olist"
+            type="android.databinding.ObservableList"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".databinding.DataBindingActivity">
+
+        <TextView
+            android:id="@+id/txt_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(user.age), default=10}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.name, default=noName}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_age" />
+
+        <TextView
+            android:id="@+id/tv_"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{str}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_name"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{list[0]}"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{map["key"]}'/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/ref_resource}"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点我"
+                android:onClick="@{clickListener}"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点我"
+                android:onClick="@{myHandler::onClickFriend}"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点我"
+                android:onClick="@{() ->presenter.onSaveClick(user)}"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{"firstName =  " + people.firstName.get()}'/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{"lastName =  " + people.lastName.get()}'/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{"ObservableArrayMap: "+ arrayMap.lastName}'/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{"ObservableList: "+ olist[0]}'/>
+        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>
